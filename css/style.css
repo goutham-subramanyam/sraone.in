@@ -596,6 +596,25 @@ body {
   align-items: center;
 }
 
+@media only screen and (max-width: 480px) {
+  body #name {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  body #name {
+    cursor: default;
+  }
+  body #name:after, body #name:before {
+    display: none;
+  }
+}
+
 body #hola {
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
@@ -616,8 +635,8 @@ body #hola path:hover {
   body #hola {
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    width: 100vh;
-    margin: 0;
+    width: calc(100vh - 72px);
+    margin: 0 0 32px 0;
   }
 }
 
@@ -641,22 +660,17 @@ body .site--footer {
   margin: auto 0 0;
 }
 
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
+@media only screen and (max-width: 991px) {
   body .site--footer {
-    padding: 0 32px 16px;
+    padding: 0 16px 16px;
   }
 }
 
 @media only screen and (max-width: 480px) {
   body .site--footer {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    -ms-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    width: 100vh;
-    padding: 0 32px 0;
+    -ms-flex-pack: center;
+    -moz-justify-content: center;
+    justify-content: center;
   }
 }
 
@@ -693,15 +707,6 @@ body .site--social a:hover, body .site--social a:focus, body .site--social a:act
 
 [spiketip-title][spiketip-length='xl']:after {
   width: 75vw;
-}
-
-@media only screen and (max-width: 768px) {
-  [spiketip-title] {
-    cursor: default;
-  }
-  [spiketip-title]:after, [spiketip-title]:before {
-    display: none;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

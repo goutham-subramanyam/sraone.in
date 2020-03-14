@@ -12,9 +12,26 @@ body {
   background-color: $bg-color;
   font-family: 'Oswald', sans-serif;
   @include flexbox();
-	@include flex-direction(column);
-	@include justify-content(center);
+  @include flex-direction(column);
+  @include justify-content(center);
   @include align-items(center);
+
+  #name {
+    @media only screen and (max-width : 480px) {
+      position: absolute;
+      top: 48px;
+      left: 0;
+      transform: rotate(-90deg);
+    }
+
+    @media only screen and (max-width : 768px) {
+      cursor: default;
+      &:after,
+      &:before {
+        display: none;
+      }
+    }
+  }
 
   #hola {
     @include align-self(center);
@@ -23,6 +40,7 @@ body {
     path {
       transition: all 0.3s;
       cursor: crosshair;
+
       &:hover {
         fill: white;
       }
@@ -30,11 +48,11 @@ body {
 
     @media only screen and (max-width: 480px) {
       transform: rotate(-90deg);
-      width: 100vh;
-      margin: 0;
+      width: calc(100vh - 72px);
+      margin: 0 0 32px 0;
     }
   }
-  
+
   .site--footer {
     @include flexbox();
     @include flex-direction(row);
@@ -44,20 +62,13 @@ body {
     width: 100%;
     padding: 16px 48px 48px;
     margin: auto 0 0;
-    
-    @media only screen and (max-width: 1024px) and (orientation : landscape) {
-      padding: 0 32px 16px;
+
+    @media only screen and (max-width: 991px) {
+      padding: 0 16px 16px;
     }
 
     @media only screen and (max-width: 480px) {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      transform: rotate(-90deg);
-      width: 100vh;
-      padding: 0 32px 0;
-
+      @include justify-content(center);
     }
   }
 
@@ -73,13 +84,16 @@ body {
       opacity: 0.8;
       transition: all 0.3s;
       cursor: pointer;
+
       svg {
         path {
           fill: black;
         }
       }
 
-      &:hover, &:focus, &:active {
+      &:hover,
+      &:focus,
+      &:active {
         opacity: 1;
       }
     }
@@ -88,13 +102,4 @@ body {
 
 [spiketip-title][spiketip-length='xl']:after {
   width: 75vw;
-}
-
-@media only screen and (max-width : 768px) {
- [spiketip-title] {
-   cursor: default;
-  &:after, &:before {
-    display: none;
-  }
- }
 }
